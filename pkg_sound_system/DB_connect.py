@@ -11,8 +11,8 @@ class db_conect:
 
     mydb = mysql.connector.connect(
         host="localhost",             
-        user="jonathan",        
-        passwd="gnipod8*",       
+        user="username",        
+        passwd="password",       
         database="soundsystem"
     )
     mycursor = mydb.cursor(buffered=True)
