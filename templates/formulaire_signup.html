@@ -1,0 +1,105 @@
+<section id="signup" class="signup d-flex">
+    <div class="container d-flex justify-content-around mt-5">
+        <div class="p-2 mt-1">
+            <h2 class="mt-5 text-center">Formulaire d'inscription</h2>
+            {% if obj_var[0] == 1 %}
+                <div class="mt-5 alert alert-danger">
+                    <p>{{obj_var[1]}}</p>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <button type="button" class="btn btn-secondary mt-5 signup">
+                        <a class="text-light" href="/signup">Réessayez !</a>
+                    </button>
+                </div>
+            {% elif obj_var == 2 %}
+                    <div class="mt-5 alert alert-success">
+                        <strong>Félicitation !</strong> Vous êtes maintenant un membre de SoundSystem.<br/>
+                        Connectez- vous et profiter d'une expérience unique.
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button type="button" class="btn btn-secondary mt-5 login">
+                            <a class="text-light" href="/login">Connectez-vous !</a>
+                        </button>
+                    </div>
+            {% elif obj_var == 3 %}
+                    <div class="mt-5 alert alert-warning">
+                        <strong>Veuillez nous pardonner la gêne occasionée !</strong> 
+                        Retenter une inscription ultérieurement.<br/>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button type="button" class="btn btn-secondary mt-5 signup">
+                            <a class="text-light" href="/signup">Réessayez !</a>
+                        </button>
+                    </div>
+            {% elif obj_var == 4 %}
+            <form method="post" action="/inscription" class="border col p-3 shadow">
+                <fieldset>
+                    <legend>Perso:</legend>
+                    <p class="form-group">
+                        <label for="lname">Nom:</label><br/>
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Doe">
+                    </p>
+                    <p class="form-group">
+                        <label for="fname">Prénom:</label><br/>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="John">
+                    </p>
+                    <p class="form-group">
+                        <label for="birth">Date de naissance:</label><br/>
+                        <input type="date" class="form-control" id="birth" name="birth" placeholder="jour/mois/année">
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Sexe</legend>
+                    <p class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="male" name="sex" value="1">
+                        <label class="custom-control-label" for="male">Homme</label>
+                    </p>
+                    <p class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="female" name="sex" value="2">
+                        <label class="custom-control-label" for="female">Femme</label>
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>Logins</legend>
+                    <p class="form-group">
+                        <label for="Login">E-mail:</label><br/>
+                        <input type="email" class="form-control" id="login" name="login" placeholder="John-doe@gmail.com">
+                    </p>
+                    <p class="form-group">
+                        <label for="pass">Password:</label><br/>
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="*******" required>
+                    </p>
+                    <p class="form-group">
+                        <label for="pass">Confirmed password:<span id='message'></span></label><br>
+                        <input type="password" class="form-control" id="conf-pass" name="pass" placeholder="*******" required>
+                    </p>
+                </fieldset>
+                <br/>
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-info border" value="Submit">
+                </div>
+            </form> 
+            <script>
+                var password = document.getElementById("pass")
+                , confirm_password = document.getElementById("conf-pass")
+                ,message = document.getElementById('message');
+
+                function validatePassword(){
+                    if(password.value != confirm_password.value) {
+                        confirm_password.style.border='2px solid red';
+                        message.style.color = 'red';
+                        message.innerHTML = ' ...not matching';
+                    } else {
+                        confirm_password.style.border='2px solid green';
+                        message.style.color = 'green';
+                        message.innerHTML = ' ...matching';
+                    }
+                }
+                
+                password.onchange = validatePassword;
+                confirm_password.onkeyup = validatePassword;
+            </script>
+            {% endif %}
+        </div>
+    </div>
+</section>

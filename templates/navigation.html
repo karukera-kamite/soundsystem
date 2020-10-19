@@ -1,0 +1,76 @@
+    <nav class="d-flex justify-content-between bg-light shadow fixed-top">
+        
+        <nav class="navbar navbar-expand-sm"> 
+            <form class="form-inline" method="POST" action="/go_search/">
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
+                <button class="btn btn-success" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </nav>
+        <div class="p-1 ">
+            <figure>
+                <img class="logo" src="/static/img/nav_img/SoundSystem_logo.png" width="150px">
+            </figure>
+        </div>
+        <nav class="navbar navbar-expand-sm list-unstyled">
+            
+            <li class="navbar-nav nav-item dropdown text-secondary">
+                <a class="nav-link dropdown-toggle  text-secondary" data-toggle="dropdown" href="#">
+                    <i class="lead font-weight-bolder fas fa-bars text-secondary"></i>
+                </a>
+                <ul class="dropdown-menu text-secondary">
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="/index#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="#new_albums">News_albums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="#mobile_app">Mobile App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="#abonment">Abonments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="#footer">social</a>
+                    </li>
+                </ul>
+            </li>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="justify-content-end ">
+                {% if session['user'] %}
+                <button type="button" class="btn btn-dark">
+                    <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" href="#">
+                        {{ session['user'] }}
+                    </a>
+                    <ul class="dropdown-menu text-secondary">
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="/consommation">Consos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="/params">Parametres</a>
+                        </li>
+                        <li class="nav-item bg-danger">
+                            <a class="dropdown-item" href="/logout/">Logout</a>
+                        </li>
+                    </ul>
+                </button>
+                {% else %}
+                <button type="button" class="btn btn-warning login">
+                    <a class="text-light" href="/login">Login</a>
+                </button>
+                <button type="button" class="btn btn-info signup">
+                    <a class="text-light" href="/signup">Sign Up</a>
+                </button>
+                {% endif %}
+            </div>
+            
+        </nav>
+
+    </nav>
+

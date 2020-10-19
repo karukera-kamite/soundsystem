@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/new_albums-style.css">
+        <link rel="stylesheet" href="/static/css/presentation-style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <title>{{ obj_var["sd_title"] }}</title>
+        {% endblock head %}
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            section {
+                min-height: 950px;
+                max-height: 1900px;
+                height: auto;
+            }
+            section.user_profile{
+                background-image: url('/static/img/section_bg/cnx_signup_bg.jpg');
+            }
+            .pointer {cursor: pointer;}
+        </style>
+    </head>
+    <body >
+        {% block body %}
+        {% endblock body %}
+        <!--script src="/static/js/new_albums_carrousel.js"></script-->
+    </body>
+</html>

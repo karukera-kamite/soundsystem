@@ -1,0 +1,105 @@
+        <section id="" class="user_profile d-flex bg-dark p-5 mt-0">
+            <div class="container align-self-center">
+                <h2 class="text-right text-light mb-5"><ins>Mon profile</ins></h2>
+                <div class="mt-5">
+                    <!-- display search albums -->
+                    <div style="overflow-x:auto;" class="allAlbums d-flex bg-dark mb-3 p-4">
+                        {% if obj_var is none %}
+                        <p class="text-light">Résultat de recherche ici ...</p>
+                        {% else %}
+                            {% for album in obj_var %}
+                            <div id="album{{album[0]}}" class="uniqAlbum p-2 ml-2 mr-2 bg-light border border-secondary rounded-lg shadow pointer">
+                                <h6>{{ album[4] }}</h6>
+                                <h5>{{ album[5] }}</h5>
+                                <figure>
+                                    <img src="{{ album[1] }}" width=150 height=150 />
+                                    <figcaption>{{ album[2] }}</figcaption>
+                                </figure>
+                                <div id="demo" class="collapse">{{ album[3] }}</div>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <p id="demo" class="collapse text-light">object: {{ obj_var }}</p>
+                    <!-- lecture -->
+                    <div class="d-flex justify-content-around mb-3">
+                        <!-- PLAYLIST -->
+                        <div class="playlist p-2 bg-secondary m-2 shadow rounded-lg border border-dark col-lg-6 col-md-12">
+                            <div class="d-flex justify-content-around col-12 col-md-12">
+                                <h5 class="text-light mr-3">Playlists</h5>
+                                <button type="button" id="addlist" class="btn btn-primary mr-2" data-toggle="collapse" data-target="#addplaylist">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                                <button type="button" id="dellist" class="btn btn-primary">
+                                    <i class="fa fa-minus-circle"></i>
+                                </button>
+                            </div>
+                            <div id="addplaylist" class="collapse">
+                                <div id="add_pl_formgrp" class="form-group text-light">
+                                    <label for="usr">ajoutez une playliste:</label><br/>
+                                    <div class="d-inline-flex">
+                                        <input type="text" class="form-control" id="playlist_name">
+                                        <input type="submit" value="+add" name="submit_plalist" id="submit_playlist">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="accordion">
+                                
+                            </div>
+                        </div>
+                        <!-- AUDIO PLAYER -->
+                        <div class="position-relative audio_player p-2 bg-secondary text-light m-2 shadow rounded-lg border border-dark col-lg-6 col-md-12">
+                            <span class="shadow border border-secondary rounded-lg p-2 bg-light position-absolute" style="left:-10px; top:-10px">
+                                <i class="fa fa-music text-secondary"></i>
+                            </span>
+                            <h6 class="player_genre text-right"></h6>
+                            <p class="player_album_title text-center"></p>
+                            <div class="d-inline-flex p-3 text-white col-lg-12 col-md-12">
+                                <figure class="rounded-circle mr-3"> 
+                                    <img class="player_img" src="" width="50" height="50"/>
+                                    <figcaption class="player_figcap"></figcaption>
+                                </figure> 
+                                <div class="btn-group" style="height:40px;">
+                                    <button type="button" id="backward" class="backward btn btn-primary" onclick="prevOrNext(1)">
+                                        <i class="fa fa-step-backward"></i>
+                                    </button>
+                                    <button type="button" id="play_audio" class="play_audio btn btn-primary">
+                                        <i id="youtube-icon" class="fa fa-play"></i>
+                                    </button>
+                                    <button type="button" id="forward" class="forward btn btn-primary" onclick="prevOrNext(2)">
+                                        <i class="fa fa-step-forward"></i>
+                                    </button>
+                                </div> 
+                                <button type="button" id="audio_icon" class="ml-3 btn btn-primary" style="height:40px;">
+                                    <span id="mute-toggle" class="material-icons">
+                                        <i class="fa fa-volume-up"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <p>
+                                <span class="track_title">current title </span>
+                                <span id="current_time"> 0:00</span> / <span id="duration">0:00</span>
+                            </p>
+                            <p class="progress">
+                                <input class="col-md-12 progress-bar" type="range" id="progress-bar" value="0">
+                            </p>
+                            <!--div class="progress" style="height:10px">
+                                <div class="progress-bar progress-bar-striped" style="width:40%"></div>
+                            </div-->
+                            <ul class="trackslist btn-group-vertical text-light">
+                                <!-- https://www.youtube.com/watch?v= -->
+                            </ul>
+                            <div style="display:flex;justify-content:center;align-items:center;">
+                                <div data-video="aFqGDcTpyco" data-autoplay="0" data-loop="1" id="youtube-audio"></div>
+                                <div style="clear:both;margin:10px;text-align:center">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript" src="/static/js/audio_player.js"></script>

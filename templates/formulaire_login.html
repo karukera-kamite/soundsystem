@@ -1,0 +1,29 @@
+<section id="login" class="login d-flex">
+    <div class="container d-flex justify-content-around mt-5">
+        <div class="p-2 mt-3">
+            <h2 class="mt-5 text-center">connection.</h2>
+            {% if obj_var != None %}
+            <div class="mt-5 alert alert-warning">
+                <span><strong>{{ obj_var }}</strong></span>
+            </div>
+            {% endif %}
+            <form method="post" action="/conexion_page/" class="border col p-3 shadow">
+                <fieldset>
+                    <legend>Logins</legend>
+                    <p class="form-group">
+                        <label for="Login">E-mail:</label><br/>
+                        <input type="email" class="form-control" id="login" name="login" placeholder="John-doe@gmail.com">
+                    </p>
+                    <p class="form-group">
+                        <label for="pass">Password:</label><br/>
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="*******">
+                    </p>
+                </fieldset>
+                <br/>
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-info border" value="Submit">
+                </div>
+            </form> 
+        </div>
+    </div>
+</section>

@@ -1,0 +1,36 @@
+        <section id="home" class="mb-0 mh-100">
+            <div class="bg-text container">
+                <p class="text-break">
+                    <strong>{{ obj_var["sd_title"] }}</strong> est une plateforme de distribution numérique
+                    dédiée à l'écoute de musique en streaming sous la forme d'un site web et
+                    d'applications mobiles.
+                    <br />
+                    Le site web propose une formule gratuite permettant une écoute 
+                    illimitée sur ordinateur et tablette, mais avec publicités.
+                    la Solution de l`abonnement offre une écoute illimitée également sur
+                    mobile, de bonne qualité et sans publicités. 
+                </p>
+            </div>
+            <div id="demo" class="carousel slide carousel-fade" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    {% for item in obj_var["file_presentation"] %}
+                        {% if item == "concert1" %}
+                            <li data-target="#demo" data-slide-to="{{ item }}" class="active"></li>
+                        {% else %}
+                            <li data-target="#demo" data-slide-to="{{ item }}"></li>
+                        {% endif %}    
+                    {% endfor %}
+                </ul>
+                <div class="carousel-inner bg-image">
+                    {% for item in obj_var["file_presentation"] %}
+                        {% if item == "concert1" %}
+                    <div class="carousel-item active">
+                        {% else %}
+                    <div class="carousel-item">
+                        {% endif %}    
+                        <img class="mh-100" src="{{ obj_var['file_presentation'][item] }}" width="100%" height="950px">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
