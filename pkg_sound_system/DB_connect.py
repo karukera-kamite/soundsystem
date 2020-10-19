@@ -10,10 +10,10 @@ from pkg_sound_system.search import search_api
 class db_conect:
 
     mydb = mysql.connector.connect(
-        host="localhost",              # host="54.37.8.108",
-        user="jonathan",         # user="root",
-        passwd="gnipod8*",       # passwd="dopingjo",
-        database="soundsystem"   # database="soundsystem"
+        host="localhost",             
+        user="jonathan",        
+        passwd="gnipod8*",       
+        database="soundsystem"
     )
     mycursor = mydb.cursor(buffered=True)
 
